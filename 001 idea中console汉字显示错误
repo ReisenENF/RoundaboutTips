@@ -1,0 +1,6 @@
+在idea的console内，tomcat输出汉字编码错误（显示为错误汉字及字符），不是字体错误（显示为方框）。
+处理方法：
+在32位的idea.exe.vmoptions和64位的idea64.exe.vmoptions启动项配置文件下添加了下面
+
+-Dfile.encoding=UTF-8
+-Dconsole.encoding=UTF-8
