@@ -29,3 +29,33 @@ static int calculate(String str) {
             }
             return res;
         }
+
+//关于不用Stack而用ArrayList的方法，其实也是可以的，原理和上边一样，只是不同类的方法写法不一样，调用起来要多写几个字，堆栈操作更底层？效率更高？
+
+static int calculate(String str) {
+            int res = 0, num = 0, n = str.length();
+            char op = '+';
+            ArrayList <Integer>st = new ArrayList<>();
+            char s[]=str.toCharArray();
+            for (int i = 0; i < n; ++i) {
+                if (s[i] >= '0') {
+                    num = num * 10 + s[i] - '0';
+                }
+                if ((s[i] < '0' && s[i] != ' ') || i == n - 1) {
+                    if (op == '+') st.add(num);
+                    if (op == '-') st.add(-num);
+                    if (op == '*' || op == '/') {
+                        int tmp = (op == '*') ? st.get(st.size()-1) * num : st.get(st.size()-1) / num;
+                        st.remove(st.size()-1);
+                        st.add(tmp);
+                    }
+                    op = s[i];
+                    num = 0;
+                }
+            }
+            while (!st.isEmpty()) {
+                res += st.get(st.size()-1);
+                st.remove(st.size()-1);
+            }
+            return res;
+        }
