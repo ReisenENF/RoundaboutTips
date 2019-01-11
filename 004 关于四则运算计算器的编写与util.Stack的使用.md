@@ -7,10 +7,8 @@ static int calculate(String str) {
                 if (s[i] >= '0') {
                 //不是符号，在遍历中获取多位十进制数组成一个数存入num，顺便将char转为int
                     num = num * 10 + s[i] - '0';
-                    
                 }
-                
-                if ((s[i] < '0' && s[i] != ' ') || i == n - 1) {
+             if ((s[i] < '0' && s[i] != ' ') || i == n - 1) {
                 //如果是符号且不为空格，Stack.push（）用于将传入参数推至该Stack对象的顶部，用于模拟*/运算高于+-运算的优先级
                     if (op == '+') st.push(num);
                     if (op == '-') st.push(-num);
