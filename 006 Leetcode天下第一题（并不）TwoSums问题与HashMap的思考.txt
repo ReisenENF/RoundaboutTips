@@ -1,0 +1,52 @@
+static public int[] twoSum(int[] nums, int target) {
+            HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
+            int[] res = new int[2];
+//            一次便利旨在建立数组内容与序号的键值对存入HashMap
+            for (int i = 0; i < nums.length; ++i) {
+                m.put(nums[i],i );
+            }
+//            二次遍历旨在搜索
+//            先选取一个值作为左半边，他的右半边即为target-左半边，然后再Map里找找右半边是否存在，
+            for (int i = 0; i < nums.length; ++i) {
+                int left=nums[i];
+                int right = target - nums[i];
+//              如果右半边存在于Map里，也不能皆大欢喜当场return，还要判定左右半边的序号是否相同
+//              因为HashMap里不会有两个重复的值，所以一旦左半边与右半边的序号相同，那么左右半边的值一定也相等（其实就是同一个键值对），这时即为半边值刚好是target的二分之一
+//              但是这种情况由题意是不能作为答案输出的，所以if里的条件要加上！=i以确保左右半边不能相等
+                if (m.containsKey(right) && m.get(right) != i) {
+
+
+                    res[0] =left;
+                    res[1] =right;
+                    break;
+                }
+            }
+            return res;
+            
+            
+            
+            
+            然而，直接判定left！=target的二分之一不就好了么...左右判定序号的可读性实在绕，于是
+          static public int[] twoSum1(int[] nums, int target) {
+            HashMap<Integer, Integer> m = new HashMap<Integer, Integer>();
+            int[] res = new int[2];
+            for (int i = 0; i < nums.length; ++i) {
+                m.put(nums[i],i );
+            }
+            for (int i = 0; i < nums.length; ++i) {
+                int left=nums[i];
+                int right = target - nums[i];
+
+                if (m.containsKey(right) && left!=(target/2)) {
+
+
+                    res[0] =left;
+                    res[1] =right;
+                    break;
+                }
+            }
+            return res;
+        }
+
+
+测试了下好像没什么问题
