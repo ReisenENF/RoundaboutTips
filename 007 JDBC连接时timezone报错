@@ -1,0 +1,1 @@
+MYSQL的默认时区SYSTEM是以美国时区，在JDBC连接时timezone报错， 需要在my.ini的mysqlid下添加default-time-zone='+08:00'
