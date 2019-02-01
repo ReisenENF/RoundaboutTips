@@ -1,0 +1,2 @@
+驱动（mysql-connector-java-xxx.jar）放在GlobleLibrary和WEB-INF下都是不好使的，会报ClassNotFoundException，
+正确方法是放到tomcat下的lib里（毫无优雅）。
