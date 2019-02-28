@@ -1,0 +1,1 @@
+使用localhost可以访问，使用ip不行，在config/index.js里将host:""中的内容改成本机ip就好了，但是以后ip变了怎么办
